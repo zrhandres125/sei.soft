@@ -50,24 +50,11 @@
                 <figure class="image is-128x128 is-inline-block">
                     <img src="assets/img/logo-ucc.png">
                 </figure>
-                <form action="" method="POST">
-                    <?php
-                    if (isset($errorLogin)) {
-                        echo "<article class='message is-danger is-small' id='mensaje'>
-                                    <div class='message-header'>
-                                        <p>Error al ingresar</p>
-                                        <button class='delete' aria-label='delete' id='cerrarmsg'></button>
-                                    </div>
-                                    <div class='message-body'>
-                                        $errorLogin
-                                    </div>    
-                                </article>";
-                    }
-                    ?>
+                <form action="validarCode.php" method="POST" role="form" id="loginForm">
                     <div class="field">
                         <label class="label has-text-left">Usuario</label>
                         <div class="control has-icons-right">
-                            <input class="input is-hovered" type="text" name="username" required>
+                            <input class="input is-hovered" type="text" name="txtUsuario" id="usuario" required autofocus>
                             <span class="icon is-small is-right">
                                 <i class="zmdi zmdi-account"></i>
                             </span>
@@ -78,7 +65,7 @@
                     <div class="field">
                         <label class="label has-text-left">Contraseña</label>
                         <div class="control has-icons-right">
-                            <input class="input is-hovered" type="password" name="password" required>
+                            <input class="input is-hovered" type="password" id="password" name="txtPassword" required>
                             <span class="icon is-small is-right">
                                 <i class="zmdi zmdi-lock"></i>
                             </span>

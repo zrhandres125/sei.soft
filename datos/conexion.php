@@ -11,7 +11,7 @@ class conexion {
 
             $cn = new PDO("mysql:host=localhost;dbname=sei_sw", "root", "");
 
-            echo "Conectado a la base de datos SEI";
+            //echo "Conectado a la base de datos SEI";
 
             return $cn;
         } catch (PDOException $ex) {
@@ -22,5 +22,5 @@ class conexion {
 
 }
 
-conexion::conectar();
+//conexion::conectar();
 

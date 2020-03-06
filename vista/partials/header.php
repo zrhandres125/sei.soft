@@ -9,6 +9,7 @@
         <link rel="shortcut icon" href="assets/icon/favicon.ico">
         <title>Sistema Evaluación Indicadores</title>
         <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/overhang.min.css" />
         <link rel="stylesheet" type="text/css" href="assets/icon/css/material-design-iconic-font.min.css">
     </head>
 
