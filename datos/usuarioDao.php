@@ -1,7 +1,7 @@
 <?php
 
 include "conexion.php";
-include "../entidades/usuarios.php";
+include "../entidades/usuario.php";
 
 // Objeto de acceso a datos (Data access object), se comunica con la bd
 class usuarioDao extends conexion {
@@ -26,7 +26,7 @@ class usuarioDao extends conexion {
      */
     public static function login($usuario) {
 
-        $query = "SELECT * FROM usuarios WHERE codigoUCC :usuario AND password = :password";
+        $query = "SELECT * FROM usuarios WHERE codigoUCC = :usuario AND password = :password";
 
         self::getConexion();
 
@@ -39,7 +39,7 @@ class usuarioDao extends conexion {
 
         if ($resultado->rowCount() > 0) {
             $filas = $resultado->fetch();
-            if ($filas["usuario"] == $usuario->getCodigoUCC() && $filas["password"] == $usuario->getPassword()) {
+            if ($filas["codigoUCC"] == $usuario->getCodigoUCC() && $filas["password"] == $usuario->getPassword()) {
                 return true;
             }
         }
@@ -67,7 +67,7 @@ class usuarioDao extends conexion {
 
         $filas = $resultado->fetch();
 
-        $usuario = new usuarios();
+        $usuario = new usuario();
         $usuario->setId_usuario($filas["id_usuario"]);
         $usuario->setCodigoUCC($filas["codigoUCC"]);
         $usuario->setNombres($filas["nombres"]);
@@ -86,25 +86,23 @@ class usuarioDao extends conexion {
      * @param object $usuario
      * @return boolean 1 registra y 2 no registra
      */
-    /**public static function registrar_usuario($usuario) {
-        $query = "INSERT INTO usuarios (nombre,usuario,email,password,privilegio) VALUES (:nombre,:usuario,:email,:password,:privilegio)";
-        
-        self::getConexion();
+    /*     * public static function registrar_usuario($usuario) {
+      $query = "INSERT INTO usuarios (nombre,usuario,email,password,privilegio) VALUES (:nombre,:usuario,:email,:password,:privilegio)";
 
-        $resultado = self::$cnx->prepare($query);
-        
-        $resultado->bindValue(":nombre", $usuario->getNombre());
-        $resultado->bindValue(":usuario", $usuario->getCodigoUCC());
-        $resultado->bindValue(":email", $usuario->getEmail());
-        $resultado->bindValue(":password", $usuario->getPassword());
-        $resultado->bindValue(":privilegio", $usuario->getPrivilegio());
-        
-        if($resultado->execute()){
-            return true;
-        }
-        
-        return false;
-    }**/
+      self::getConexion();
 
+      $resultado = self::$cnx->prepare($query);
+
+      $resultado->bindValue(":nombre", $usuario->getNombre());
+      $resultado->bindValue(":usuario", $usuario->getCodigoUCC());
+      $resultado->bindValue(":email", $usuario->getEmail());
+      $resultado->bindValue(":password", $usuario->getPassword());
+      $resultado->bindValue(":privilegio", $usuario->getPrivilegio());
+
+      if($resultado->execute()){
+      return true;
+      }
+
+      return false;
+      }* */
 }
-

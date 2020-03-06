@@ -4,7 +4,7 @@
  * Las variables son los campos de la tabla usuarios
  */
 
-class usuarios {
+class usuario {
 
     private $id_usuario;
     private $codigoUCC;

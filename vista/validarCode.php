@@ -20,9 +20,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         if (usuarioControlador::login($txtUsuario, $txtPassword)) {
             $usuario             = usuarioControlador::getUsuario($txtUsuario, $txtPassword);
             $_SESSION["usuario"] = array(
-                "id_usuario"   => $usuario->getCodigoUCC(),
-                /**"nombre"     => $usuario->getNombre(),
-                "usuario"    => $usuario->getUsuario(),
+                "id_usuario"   => $usuario->getId_usuario(),
+                "usuario"     => $usuario->getCodigoUCC(),
+                /**"usuario"    => $usuario->getUsuario(),
                 "email"      => $usuario->getEmail(),
                 "privilegio" => $usuario->getPrivilegio(),**/
             );

@@ -7,7 +7,7 @@ class usuarioControlador{
     
     public static function login($usuario, $password){
         
-        $obj_usuario = new usuarios();
+        $obj_usuario = new usuario();
         
         $obj_usuario->setCodigoUCC($usuario);
         $obj_usuario->setPassword($password);
@@ -24,7 +24,7 @@ class usuarioControlador{
      */
     public function getUsuario($usuario, $password) {
         
-        $obj_usuario = new usuarios();
+        $obj_usuario = new usuario();
         
         $obj_usuario->setCodigoUCC($usuario);
         $obj_usuario->setPassword($password);
@@ -51,5 +51,8 @@ class usuarioControlador{
         $obj_usuario->setPrivilegio($privilegio);
         
         return usuarioDao::registrar_usuario($obj_usuario);
-    }**/ 
+    }**/
+    
+    
+    
 }
