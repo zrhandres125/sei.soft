@@ -1,6 +1,6 @@
-<?php //include ("partials/header.php"); ?>
+<?php include ("partials/header.php"); ?>
 
-<?php //include ("partials/banner.php"); ?>
+<?php include ("partials/banner.php"); ?>
 
 <div class="modal">
     <div class="modal-background"></div>
@@ -9,7 +9,7 @@
             <p class="modal-card-title">Registro</p>
             <button class="delete" aria-label="close"></button>
         </header>
-        <form action="modulos/registro/registro_usuario.php">
+        <form action="#">
             <section class="modal-card-body">
                 <p class="has-text-left" style="margin-bottom: 10px;">
                     Confirme que su usuario no haya sido creado.
@@ -91,4 +91,4 @@
     </div>
 </section>
 
-<?php //include "partials/footer.php"; ?>
+<?php include "partials/footer.php"; ?>

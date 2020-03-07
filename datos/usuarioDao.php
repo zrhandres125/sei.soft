@@ -1,7 +1,7 @@
 <?php
 
 include "conexion.php";
-include "../entidades/usuario.php";
+include "entidades/usuario.php";
 
 // Objeto de acceso a datos (Data access object), se comunica con la bd
 class usuarioDao extends conexion {

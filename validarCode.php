@@ -1,7 +1,7 @@
 <?php
 
-include "../controlador/usuarioControlador.php";
-include "../helps/helps.php";
+include "controlador/usuarioControlador.php";
+include "helps/helps.php";
 
 session_start();
 

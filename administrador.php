@@ -14,7 +14,7 @@ if (isset($_SESSION["usuario"])) {
 
 <?php include "partials/menu.php"; ?>
 
-<section class="section">
+<!--<section class="section">
     <div class="container">
         <div class="columns">
             <div class="column is-12">
@@ -23,7 +23,22 @@ if (isset($_SESSION["usuario"])) {
             </div>
         </div>
     </div>
-</section>
+</section>-->
+
+
+<?php $modulo = isset($_GET['modulo']) ? strtolower($_GET['modulo']) : 'inicio/vista' ?>
+<?php require_once ("modulos/" . $modulo . ".php"); ?>
+
+
+
+
+
+
+
+
+
+
+
 
 
 <?php include "partials/footer.php"; ?>

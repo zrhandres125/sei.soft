@@ -27,7 +27,7 @@
                     &nbsp; Inicio
                 </a>
 
-                <a class="navbar-item" href="?page=usuarios/listarUsuario">
+                <a class="navbar-item" href="?modulo=usuarios/listarusuario">
                     <span class="icon is-small">
                         <i class="zmdi zmdi-account"></i>
                     </span>

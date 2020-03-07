@@ -1,1 +1,0 @@
-<?php include ("vista/partials/header.php"); ?>

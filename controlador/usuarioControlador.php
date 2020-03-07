@@ -1,6 +1,6 @@
 <?php
 
-include "../datos/usuarioDao.php";
+include "datos/usuarioDao.php";
 
 //Capa que se comunica con la vista
 class usuarioControlador{

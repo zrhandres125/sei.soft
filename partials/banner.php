@@ -20,7 +20,7 @@
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
-                    <a class="button is-hovered">
+                    <a class="button is-hovered" href="registro">
                         <span class="icon is-small">
                             <i class="zmdi zmdi-file-text"></i>
                         </span>

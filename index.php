@@ -1,16 +1,19 @@
 <?php
 
-//header('Location: vista/login.php');
-//exit();
-?>
+if (isset($_GET["pagina"])) {
 
-<?php include ("vista/login.php"); ?>
+    if ($_GET["pagina"] == "registro") {
 
-<?php //include ("vista/partials/banner.php"); ?>
+        include ("registro_usuario.php");
+    }
+
+    if ($_GET["pagina"] == "login") {
+
+        include ("login.php");
+    }
+    
+} else {
+    include ("login.php");
+}
 
 
-<?php // $pagina = isset($_GET['page']) ? strtolower($_GET['page']) : 'login' ?>
-<?php // require_once ("vista/" . $pagina . ".php"); ?>
-
-
-<?php //include "vista/partials/footer.php"; ?>
