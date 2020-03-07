@@ -1,6 +1,6 @@
-<?php include ("partials/header.php"); ?>
+<?php //include ("partials/header.php"); ?>
 
-<?php include ("partials/banner.php"); ?>
+<?php //include ("partials/banner.php"); ?>
 
 <div class="modal">
     <div class="modal-background"></div>
@@ -91,4 +91,4 @@
     </div>
 </section>
 
-<?php include "partials/footer.php"; ?>
+<?php //include "partials/footer.php"; ?>

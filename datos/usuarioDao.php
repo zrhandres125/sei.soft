@@ -26,7 +26,7 @@ class usuarioDao extends conexion {
      */
     public static function login($usuario) {
 
-        $query = "SELECT * FROM usuarios WHERE codigoUCC = :usuario AND password = :password";
+        $query = "SELECT * FROM usuarios WHERE codigoUCC = :usuario AND password = :password AND status_usuario = 1";
 
         self::getConexion();
 
@@ -34,6 +34,7 @@ class usuarioDao extends conexion {
 
         $resultado->bindValue(":usuario", $usuario->getCodigoUCC());
         $resultado->bindValue(":password", $usuario->getPassword());
+        
 
         $resultado->execute();
 

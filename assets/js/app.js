@@ -19,7 +19,7 @@ $(document).ready(function () {
                         type: "success",
                         message: "Usuario encontrado, te estamos redirigiendo...",
                         callback: function() {
-                            window.location.href = "admin.php"
+                            window.location.href = "administrador.php"
                         }
                     });
                 } else {
