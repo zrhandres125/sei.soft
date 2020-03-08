@@ -1,6 +1,6 @@
 <nav class="navbar is-primary is-fixed-top" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-        <a class="navbar-item" href="index.php">
+        <a class="navbar-item">
             <span class="icon is-small" style="margin-left: 10px">
                 <i class="zmdi zmdi-tablet-android zmdi-hc-2x"></i>
             </span>
@@ -20,7 +20,7 @@
         <div class="navbar-start">
 
             <?php if ($_SESSION["usuario"]["privilegio"] == 1) { ?>
-                <a class="navbar-item" href="administrador.php">
+                <a class="navbar-item" href="administrador">
                     <span class="icon is-small">
                         <i class="zmdi zmdi-home"></i>
                     </span>

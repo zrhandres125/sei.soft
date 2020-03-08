@@ -12,6 +12,7 @@ if (isset($_GET["pagina"])) {
         include ("login.php");
     }
     
+    
 } else {
     include ("login.php");
 }

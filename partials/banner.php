@@ -1,6 +1,6 @@
 <nav class="navbar is-primary is-fixed-top" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-        <a class="navbar-item" href="/sei.soft/index.php">
+        <a class="navbar-item" href="login">
             <span class="icon is-small" style="margin-left: 10px">
                 <i class="zmdi zmdi-tablet-android zmdi-hc-2x"></i>
             </span>
