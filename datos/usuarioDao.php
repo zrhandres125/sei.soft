@@ -31,9 +31,12 @@ class usuarioDao extends conexion {
         self::getConexion();
 
         $resultado = self::$cnx->prepare($query);
+        
+        $user = $usuario->getCodigoUCC();
+        $clave = $usuario->getPassword();
 
-        $resultado->bindValue(":usuario", $usuario->getCodigoUCC());
-        $resultado->bindValue(":password", $usuario->getPassword());
+        $resultado->bindParam(":usuario", $user);
+        $resultado->bindParam(":password", $clave);
         
 
         $resultado->execute();
@@ -60,9 +63,12 @@ class usuarioDao extends conexion {
         self::getConexion();
 
         $resultado = self::$cnx->prepare($query);
+        
+        $user = $usuario->getCodigoUCC();
+        $clave =  $usuario->getPassword();       
 
-        $resultado->bindValue(":usuario", $usuario->getCodigoUCC());
-        $resultado->bindValue(":password", $usuario->getPassword());
+        $resultado->bindParam(":usuario", $user);
+        $resultado->bindParam(":password", $clave);
 
         $resultado->execute();
 
@@ -81,6 +87,52 @@ class usuarioDao extends conexion {
 
         return $usuario;
     }
+    
+    
+    /**
+     * Metodo que sirve para obtener todos los usuarios donde se listan
+     * @param object $usuario
+     * @return object
+     */
+    public static function getUsuarios() {
+
+        $query = "SELECT id_usuario, codigoUCC, CONCAT(nombres,' ',apellidos) AS usuario, genero, telefono, email, privilegio, status_usuario FROM usuarios";
+        
+        self::getConexion();
+
+        $resultado = self::$cnx->prepare($query);
+
+        $resultado->execute();
+
+        //Obtiene toda la lista de datos que ejecuta el select
+        $filas = $resultado->fetchAll();
+
+        return $filas;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     /**
      * Metodo que registra los usuarios desde el login

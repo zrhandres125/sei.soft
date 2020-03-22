@@ -33,6 +33,22 @@ class usuarioControlador{
     }
     
     
+    //Lista todos los usuarios registrados
+    public function getUsuarios() {
+        
+        return usuarioDao::getUsuarios();
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     /**
      * Obtiene los datos de usuario
