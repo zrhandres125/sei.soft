@@ -108,7 +108,7 @@
                     </span>
                     &nbsp; Indicadores calidad del huevo
                 </a>
-            
+
                 <a class="navbar-item" href="?page=ind_productividad/indProductividad">
                     <span class="icon is-small">
                         <i class="zmdi zmdi-archive"></i>
@@ -141,7 +141,7 @@
                                 &nbsp; Manual
                             </a>
 
-                            <a class="navbar-item" href="cerrar-session.php">
+                            <a class="navbar-item" href="javascript:salir(confirm('¿Deséas salir del sistema?'),'cerrar-session.php');">
                                 <span class="icon is-small">
                                     <i class="zmdi zmdi-power"></i>
                                 </span>
@@ -156,5 +156,18 @@
 </nav>
 <br>
 <br>
+
+<script type="text/javascript">
+
+    function salir(confirmacion, url) {
+
+        if (confirmacion) {
+
+            window.location.href = url;
+        }
+
+    }
+
+</script>
 
 

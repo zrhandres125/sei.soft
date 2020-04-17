@@ -42,7 +42,7 @@ $filas = usuarioControlador::getUsuarios();
                 </a>
             </div>
         </div>
-       
+
         <div class="columns" style="margin-top: 30px;">
             <div class="column is-12">
                 <div class="table-container">
@@ -60,7 +60,7 @@ $filas = usuarioControlador::getUsuarios();
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($filas as $usuario) { ?>
+                                <?php foreach ($filas as $usuario) { ?>
                                 <tr>
                                     <td class="has-text-centered"> <?php echo $usuario['codigoUCC']; ?> </td>
                                     <td class="has-text-centered"> <?php echo $usuario['usuario']; ?> </td>
@@ -71,13 +71,13 @@ $filas = usuarioControlador::getUsuarios();
                                     <td class="has-text-centered"> <?php echo getStatus($usuario['status_usuario']); ?> </td>
                                     <td>
                                         <div class="buttons has-addons is-centered">
-                                            <a class="button is-success is-active is-small" href='?page=usuarios/actualizarUsuario&codigo=<?php echo $row['codigoUCC']; ?>'>
+                                            <a class="button is-success is-active is-small" href='?modulo=usuarios/nuevo_usuario&codigoUCC=<?php echo $usuario['codigoUCC'] ?>'>
                                                 <span class="icon is-small">
                                                     <i class="zmdi zmdi-edit"></i>
                                                 </span>
                                             </a>
 
-                                            <a class="button is-danger is-active is-small" href='?page=usuarios/eliminarUsuario&codigo=<?php echo $row['codigoUCC']; ?>'>
+                                            <a class="button is-danger is-active is-small" href="javascript:eliminar_usuario(confirm('¿Desea eliminar este usuario?'),'?modulo=usuarios/eliminar_usuario_logic&codigoUCC=<?php echo $usuario['codigoUCC'] ?>');" >
                                                 <span class="icon is-small">
                                                     <i class="zmdi zmdi-close"></i>
                                                 </span>
@@ -93,5 +93,18 @@ $filas = usuarioControlador::getUsuarios();
         </div>
     </div>
 </section>
+
+<script type="text/javascript">
+
+    function eliminar_usuario (confirmacion, url) {
+
+        if(confirmacion){
+            
+            window.location.href = url;
+        }
+
+    }
+
+</script>
 
 

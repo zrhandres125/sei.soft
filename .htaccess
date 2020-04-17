@@ -1,6 +1,15 @@
-RewriteEngine On
+Options -Indexes
+#deny from all
 
-RewriteRule ^([a-zA-Z0-9]+)$ index.php?pagina=$1
 
+<IfModule mod_rewrite.c>
+# Activar RewriteEngine
+RewriteEngine on
+RewriteBase /sei.soft/
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+ 
+RewriteRule ^(.*)$ $1.php
 
+</IfModule>
 

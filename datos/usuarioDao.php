@@ -31,13 +31,13 @@ class usuarioDao extends conexion {
         self::getConexion();
 
         $resultado = self::$cnx->prepare($query);
-        
+
         $user = $usuario->getCodigoUCC();
         $clave = $usuario->getPassword();
 
         $resultado->bindParam(":usuario", $user);
         $resultado->bindParam(":password", $clave);
-        
+
 
         $resultado->execute();
 
@@ -58,14 +58,16 @@ class usuarioDao extends conexion {
      */
     public static function getUsuario($usuario) {
 
-        $query = "SELECT id_usuario, codigoUCC, nombres, apellidos, genero, telefono, email, privilegio, status_usuario FROM usuarios WHERE codigoUCC = :usuario AND password = :password";
+        $query = "SELECT id_usuario, codigoUCC, nombres, apellidos, genero, "
+                . "telefono, email, privilegio, status_usuario FROM usuarios "
+                . "WHERE codigoUCC = :usuario AND password = :password";
 
         self::getConexion();
 
         $resultado = self::$cnx->prepare($query);
-        
+
         $user = $usuario->getCodigoUCC();
-        $clave =  $usuario->getPassword();       
+        $clave = $usuario->getPassword();
 
         $resultado->bindParam(":usuario", $user);
         $resultado->bindParam(":password", $clave);
@@ -87,17 +89,17 @@ class usuarioDao extends conexion {
 
         return $usuario;
     }
-    
-    
+
     /**
-     * Metodo que sirve para obtener todos los usuarios donde se listan
+     * Metodo que sirve para listar todos los usuarios
      * @param object $usuario
      * @return object
      */
     public static function getUsuarios() {
 
-        $query = "SELECT id_usuario, codigoUCC, CONCAT(nombres,' ',apellidos) AS usuario, genero, telefono, email, privilegio, status_usuario FROM usuarios";
-        
+        $query = "SELECT id_usuario, codigoUCC, CONCAT(nombres,' ',apellidos) AS "
+                . "usuario, genero, telefono, email, privilegio, status_usuario FROM usuarios";
+
         self::getConexion();
 
         $resultado = self::$cnx->prepare($query);
@@ -109,6 +111,129 @@ class usuarioDao extends conexion {
 
         return $filas;
     }
+
+    /**
+     * Metodo que registra los usuarios desde el administrador o los actualiza
+     * @param object $usuario
+     * @return boolean 1 registra y 2 no registra
+     */
+    public static function crearUsuario($usuario) {
+
+        //valida que venga el id para proceder a actualizar
+        if (is_null($usuario->getId_usuario())) {
+
+            $query = "INSERT INTO usuarios (codigoUCC, nombres, apellidos, genero, telefono, email, privilegio, password, status_usuario)"
+                    . " VALUES (:codigoUCC, :nombres, :apellidos, :genero, :telefono, :email, :privilegio, :password, :status_usuario)";
+        } else {
+
+            $query = "UPDATE usuarios SET codigoUCC=:codigoUCC, nombres=:nombres, apellidos=:apellidos, genero=:genero, telefono=:telefono,"
+                    . "email=:email, privilegio=:privilegio, password=:password, status_usuario=:status_usuario"
+                    . " WHERE Id_usuario=:Id_usuario";
+        }
+
+
+        self::getConexion();
+
+        $resultado = self::$cnx->prepare($query);
+
+        $codigoUCC = $usuario->getCodigoUCC();
+        $nombres = $usuario->getNombres();
+        $apellidos = $usuario->getApellidos();
+        $genero = $usuario->getGenero();
+        $telefono = $usuario->getTelefono();
+        $email = $usuario->getEmail();
+        $privilegio = $usuario->getPrivilegio();
+        $password = $usuario->getPassword();
+        $status_usuario = $usuario->getStatus_usuario();
+
+
+        if (!is_null($usuario->getId_usuario())) {
+
+            $Id_usuario = $usuario->getId_usuario();
+            $resultado->bindParam(":Id_usuario", $Id_usuario);
+        }
+
+        $resultado->bindParam(":codigoUCC", $codigoUCC);
+        $resultado->bindParam(":nombres", $nombres);
+        $resultado->bindParam(":apellidos", $apellidos);
+        $resultado->bindParam(":genero", $genero);
+        $resultado->bindParam(":telefono", $telefono);
+        $resultado->bindParam(":email", $email);
+        $resultado->bindParam(":privilegio", $privilegio);
+        $resultado->bindParam(":password", $password);
+        $resultado->bindParam(":status_usuario", $status_usuario);
+
+        if ($resultado->execute()) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Metodo que sirve para buscar un usuario por su codigoUcc, esto con el fin
+     * de cargar el formulario para su posterior actualizacion
+     * @param object $usuario
+     * @return object
+     */
+    public static function getUsuarioPorid($codigoUCC) {
+
+        $query = "SELECT id_usuario, codigoUCC, nombres, apellidos, genero, telefono, email, "
+                . "privilegio, password, status_usuario FROM usuarios WHERE codigoUCC = :codigoUCC";
+
+        self::getConexion();
+
+        $resultado = self::$cnx->prepare($query);
+
+        //Cambios para implementar 14.03.20 en el proyecto       
+        $resultado->bindParam(":codigoUCC", $codigoUCC);
+
+        $resultado->execute();
+
+        $filas = $resultado->fetch();
+
+        $usuario = new usuario();
+        $usuario->setId_usuario($filas["id_usuario"]);
+        $usuario->setCodigoUCC($filas["codigoUCC"]);
+        $usuario->setNombres($filas["nombres"]);
+        $usuario->setApellidos($filas["apellidos"]);
+        $usuario->setGenero($filas["genero"]);
+        $usuario->setTelefono($filas["telefono"]);
+        $usuario->setEmail($filas["email"]);
+        $usuario->setPrivilegio($filas["privilegio"]);
+        $usuario->setPassword($filas["password"]);
+        $usuario->setStatus_usuario($filas["status_usuario"]);
+
+        return $usuario;
+    }
+
+    /**
+     * Metodo que sirve para eliminar un usuario
+     * @param object $usuario
+     * @return boolean
+     */
+    public static function eliminarUsuario($codigoUCC) {
+
+        $query = "DELETE FROM usuarios WHERE codigoUCC = :codigoUCC";
+
+        self::getConexion();
+
+        $resultado = self::$cnx->prepare($query);
+
+        //Cambios para implementar 14.03.20 en el proyecto       
+        $resultado->bindParam(":codigoUCC", $codigoUCC);
+
+        $resultado->execute();
+
+        if ($resultado->execute()) {
+            return true;
+        }
+
+        return false;
+    }
+    
+    
+    
     
     
     

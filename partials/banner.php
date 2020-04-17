@@ -1,6 +1,6 @@
 <nav class="navbar is-primary is-fixed-top" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-        <a class="navbar-item" href="login">
+        <a class="navbar-item" href="index">
             <span class="icon is-small" style="margin-left: 10px">
                 <i class="zmdi zmdi-tablet-android zmdi-hc-2x"></i>
             </span>
@@ -20,7 +20,7 @@
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
-                    <a class="button is-hovered" href="registro">
+                    <a class="button is-hovered" href="registro_usuario">
                         <span class="icon is-small">
                             <i class="zmdi zmdi-file-text"></i>
                         </span>
