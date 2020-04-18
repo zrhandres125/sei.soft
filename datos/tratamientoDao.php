@@ -1,10 +1,10 @@
 <?php
 
 include "conexion.php";
-include "entidades/usuario.php";
+include "entidades/tratamiento.php";
 
 // Objeto de acceso a datos (Data access object), se comunica con la bd
-class usuarioDao extends conexion {
+class tratamientoDao extends conexion {
 
     // Variable de conexion
     protected static $cnx;
@@ -19,86 +19,16 @@ class usuarioDao extends conexion {
         self::$cnx = null;
     }
 
-    /**
-     * Metodo que valida el login
-     * @param object $usuario
-     * @return boolean 1 existe y 0 no existe
-     */
-    public static function login($usuario) {
+   
 
-        $query = "SELECT * FROM usuarios WHERE codigoUCC = :usuario AND password = :password AND status_usuario = 1";
-
-        self::getConexion();
-
-        $resultado = self::$cnx->prepare($query);
-
-        $user = $usuario->getCodigoUCC();
-        $clave = $usuario->getPassword();
-
-        $resultado->bindParam(":usuario", $user);
-        $resultado->bindParam(":password", $clave);
-
-
-        $resultado->execute();
-
-        if ($resultado->rowCount() > 0) {
-            $filas = $resultado->fetch();
-            if ($filas["codigoUCC"] == $usuario->getCodigoUCC() && $filas["password"] == $usuario->getPassword()) {
-                return true;
-            }
-        }
-
-        return false;
-    }
 
     /**
-     * Metodo que sirve para obtener un usuario
-     * @param object $usuario
-     * @return object
+     * Metodo que lista los tratamientos
+     * @return obj tratamiento
      */
-    public static function getUsuario($usuario) {
+    public static function getTratamientos() {
 
-        $query = "SELECT id_usuario, codigoUCC, nombres, apellidos, genero, "
-                . "telefono, email, privilegio, status_usuario FROM usuarios "
-                . "WHERE codigoUCC = :usuario AND password = :password";
-
-        self::getConexion();
-
-        $resultado = self::$cnx->prepare($query);
-
-        $user = $usuario->getCodigoUCC();
-        $clave = $usuario->getPassword();
-
-        $resultado->bindParam(":usuario", $user);
-        $resultado->bindParam(":password", $clave);
-
-        $resultado->execute();
-
-        $filas = $resultado->fetch();
-
-        $usuario = new usuario();
-        $usuario->setId_usuario($filas["id_usuario"]);
-        $usuario->setCodigoUCC($filas["codigoUCC"]);
-        $usuario->setNombres($filas["nombres"]);
-        $usuario->setApellidos($filas["apellidos"]);
-        $usuario->setGenero($filas["genero"]);
-        $usuario->setTelefono($filas["telefono"]);
-        $usuario->setEmail($filas["email"]);
-        $usuario->setPrivilegio($filas["privilegio"]);
-        $usuario->setStatus_usuario($filas["status_usuario"]);
-
-        return $usuario;
-    }
-
-    /**
-     * Metodo que sirve para listar todos los usuarios
-     * @param object $usuario
-     * @return object
-     */
-    public static function getUsuarios() {
-
-        $query = "SELECT id_usuario, codigoUCC, CONCAT(nombres,' ',apellidos) AS "
-                . "usuario, genero, telefono, email, privilegio, status_usuario FROM usuarios";
+        $query = "SELECT id_tratamiento, nombre, observaciones, status_tratamiento FROM tratamientos";
 
         self::getConexion();
 
@@ -111,6 +41,16 @@ class usuarioDao extends conexion {
 
         return $filas;
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     /**
      * Metodo que registra los usuarios desde el administrador o los actualiza
@@ -170,13 +110,18 @@ class usuarioDao extends conexion {
         return false;
     }
 
+    
+    
+    
+    
+    
     /**
      * Metodo que sirve para buscar un usuario por su codigoUcc, esto con el fin
      * de cargar el formulario para su posterior actualizacion
      * @param object $usuario
      * @return object
      */
-    public static function getUsuarioPorid($codigoUCC) {
+    public static function getTratamientoPorid($nombre) {
 
         $query = "SELECT id_usuario, codigoUCC, nombres, apellidos, genero, telefono, email, "
                 . "privilegio, password, status_usuario FROM usuarios WHERE codigoUCC = :codigoUCC";
@@ -206,6 +151,16 @@ class usuarioDao extends conexion {
 
         return $usuario;
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     /**
      * Metodo que sirve para eliminar un usuario
@@ -219,7 +174,7 @@ class usuarioDao extends conexion {
         self::getConexion();
 
         $resultado = self::$cnx->prepare($query);
-  
+     
         $resultado->bindParam(":codigoUCC", $codigoUCC);
 
         $resultado->execute();

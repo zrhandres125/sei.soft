@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         } else {
             ?>
             <script type="text/javascript">
-                alert('No se pudo eliminar el usuario.');
+                alert('No es posible eliminar el usuario, esta enlazado con otras tablas.');
                 window.location.href = '?modulo=usuarios/listar_usuarios';
             </script>
             <?php

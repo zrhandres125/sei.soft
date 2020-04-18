@@ -34,7 +34,7 @@
                     &nbsp; Usuarios
                 </a>
 
-                <a class="navbar-item" href="?page=tratamientos/listarTratamiento">
+                <a class="navbar-item" href="?modulo=tratamientos/listar_tratamientos">
                     <span class="icon is-small">
                         <i class="zmdi zmdi-format-list-bulleted"></i>
                     </span>
