@@ -1,5 +1,5 @@
 <?php
-include 'controlador/UsuarioControlador.php';
+include 'controlador/usuarioControlador.php';
 include 'helps/helps.php';
 
 $usuario = null;

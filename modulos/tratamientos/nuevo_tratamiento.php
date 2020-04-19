@@ -1,5 +1,5 @@
 <?php
-include 'controlador/UsuarioControlador.php';
+include 'controlador/tratamientoControlador.php';
 include 'helps/helps.php';
 
 $tratamiento = null;
@@ -7,22 +7,29 @@ $tratamiento = null;
 if (isset($_GET["nombre"])) {
 
     $nombre = validar_campo($_GET["nombre"]);
-    $tratamiento = UsuarioControlador::getUsuarioPorid($nombre);
+    $tratamiento = tratamientoControlador::getTratamientoPorid($nombre);
 }
 ?>
 
 
 <section class="section">
     <div class="container">
-        <form action="?page=tratamientos/insertarTratamiento" method="POST" id="form1">
+        <form action="?modulo=tratamientos/nuevo_tratamiento_logic" method="POST" name="frm_tratamiento" onsubmit="return validarTratamiento();" autocomplete="off">
             <div class="columns">
                 <div class="column is-4 is-hidden-mobile">&nbsp;</div>
                 <div class="column is-4">
-                    <h4 class="title is-4 has-text-grey-dark has-text-centered">Registro de tratamientos</h4>
+                    <?php if (is_null($tratamiento)) { ?>
+                        <h4 class="title is-4 has-text-grey-dark has-text-centered">Registro de tratamientos</h4>
+                    <?php } else { ?>
+                        <h4 class="title is-4 has-text-grey-dark has-text-centered">Editar tratamiento: <?php echo $tratamiento->getNombre(); ?></h4>
+                        <input type="hidden" name="txtid_tratamiento" value="<?php echo $tratamiento->getId_tratamiento(); ?>">
+                    <?php } ?> 
+
                     <div class="field">
                         <label class="label">Nombre</label>
                         <div class="control has-icons-right">
-                            <input class="input is-hovered" type="text" name="nombre" id="nombre" required>
+                            <input class="input is-hovered" type="text" name="txtn_tratamiento" id="txtn_tratamiento" 
+                                   value="<?php echo is_null($tratamiento) ? "" : $tratamiento->getNombre() ?>" autofocus>
                             <span class="icon is-small is-right">
                                 <i class="zmdi zmdi-collection-text"></i>
                             </span>
@@ -32,7 +39,7 @@ if (isset($_GET["nombre"])) {
                     <div class="field">
                         <label class="label">Observaciones</label>
                         <div class="control">
-                            <textarea class="textarea is-hovered has-fixed-size" name="observaciones" id="observaciones" required></textarea>
+                            <textarea class="textarea is-hovered has-fixed-size has-text-justified" name="txtobs" id="txtobs"><?php echo is_null($tratamiento) ? "" : $tratamiento->getObservaciones() ?></textarea>
                         </div>
                     </div>
 
@@ -40,9 +47,18 @@ if (isset($_GET["nombre"])) {
                         <label class="label">Status</label>
                         <div class="control">
                             <div class="select is-fullwidth">
-                                <select name="status_tratamiento" id="status_tratamiento">
-                                    <option selected value="1">Activo</option>
-                                    <option value="0">Inactivo</option>
+                                <select name="sestado" id="sestado">
+                                    <?php if (is_null($tratamiento)) { ?>
+                                        <option selected value="">Elige una opcion</option>
+                                        <option value="1">Activo</option>
+                                        <option value="2">Inactivo</option>
+                                    <?php } elseif ($tratamiento->getStatus_tratamiento() == '1') { ?>
+                                        <option selected value="1">Activo</option>
+                                        <option value="2">Inactivo</option>
+                                    <?php } elseif ($tratamiento->getStatus_tratamiento() == '2') { ?>
+                                        <option selected value="2">Inactivo</option>
+                                        <option value="1">Activo</option>
+                                    <?php } ?>    
                                 </select>
                             </div>
                         </div>
@@ -53,7 +69,7 @@ if (isset($_GET["nombre"])) {
                             <i class="zmdi zmdi-format-list-bulleted"></i>
                         </span>
                         <span>
-                            <?php echo is_null($usuario) ? "Crear tratamiento" : "Editar tratamiento" ?>
+                            <?php echo is_null($tratamiento) ? "Crear tratamiento" : "Editar tratamiento" ?>
                         </span>
                     </button>
 
@@ -69,3 +85,6 @@ if (isset($_GET["nombre"])) {
         </form>
     </div>
 </section>
+
+
+<script type="text/javascript" src="assets/js/validar_frm_tratamiento.js"></script>

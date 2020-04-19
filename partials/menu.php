@@ -20,7 +20,7 @@
         <div class="navbar-start">
 
             <?php if ($_SESSION["usuario"]["privilegio"] == 1) { ?>
-                <a class="navbar-item" href="administrador.php">
+            <a class="navbar-item" href="administrador">
                     <span class="icon is-small">
                         <i class="zmdi zmdi-home"></i>
                     </span>

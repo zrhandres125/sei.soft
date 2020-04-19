@@ -14,7 +14,7 @@
 <script src="assets/js/navbar.js"></script>
 <script src="assets/js/modal.js"></script>
 <script src="assets/js/dropdown.js"></script>
-<script src="assets/js/mensaje.js"></script>
+
 
 </body>
 

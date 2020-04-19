@@ -19,16 +19,13 @@ class tratamientoDao extends conexion {
         self::$cnx = null;
     }
 
-   
-
-
     /**
      * Metodo que lista los tratamientos
      * @return obj tratamiento
      */
     public static function getTratamientos() {
 
-        $query = "SELECT id_tratamiento, nombre, observaciones, status_tratamiento FROM tratamientos";
+        $query = "SELECT id_tratamiento, nombre, observaciones, status_tratamiento FROM tratamientos ORDER BY id_tratamiento ASC";
 
         self::getConexion();
 
@@ -41,34 +38,23 @@ class tratamientoDao extends conexion {
 
         return $filas;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
     /**
-     * Metodo que registra los usuarios desde el administrador o los actualiza
-     * @param object $usuario
+     * Metodo que registra los tratamientos desde el administrador o los actualiza
+     * @param object $tratamiento
      * @return boolean 1 registra y 2 no registra
      */
-    public static function crearUsuario($usuario) {
+    public static function crearTratamiento($tratamiento) {
 
         //valida que venga el id para proceder a actualizar
-        if (is_null($usuario->getId_usuario())) {
+        if (is_null($tratamiento->getId_tratamiento())) {
 
-            $query = "INSERT INTO usuarios (codigoUCC, nombres, apellidos, genero, telefono, email, privilegio, password, status_usuario)"
-                    . " VALUES (:codigoUCC, :nombres, :apellidos, :genero, :telefono, :email, :privilegio, :password, :status_usuario)";
+            $query = "INSERT INTO tratamientos (nombre, observaciones, status_tratamiento)"
+                    . " VALUES (:nombre, :observaciones, :status_tratamiento)";
         } else {
 
-            $query = "UPDATE usuarios SET codigoUCC=:codigoUCC, nombres=:nombres, apellidos=:apellidos, genero=:genero, telefono=:telefono,"
-                    . "email=:email, privilegio=:privilegio, password=:password, status_usuario=:status_usuario"
-                    . " WHERE Id_usuario=:Id_usuario";
+            $query = "UPDATE tratamientos SET nombre=:nombre, observaciones=:observaciones, "
+                    . "status_tratamiento=:status_tratamiento WHERE id_tratamiento = :id_tratamiento";
         }
 
 
@@ -76,32 +62,24 @@ class tratamientoDao extends conexion {
 
         $resultado = self::$cnx->prepare($query);
 
-        $codigoUCC = $usuario->getCodigoUCC();
-        $nombres = $usuario->getNombres();
-        $apellidos = $usuario->getApellidos();
-        $genero = $usuario->getGenero();
-        $telefono = $usuario->getTelefono();
-        $email = $usuario->getEmail();
-        $privilegio = $usuario->getPrivilegio();
-        $password = $usuario->getPassword();
-        $status_usuario = $usuario->getStatus_usuario();
+        $nombre = $tratamiento->getNombre();
+        $observaciones = $tratamiento->getObservaciones();
+        $status_tratamiento = $tratamiento->getStatus_tratamiento();
+
+        echo $nombre;
 
 
-        if (!is_null($usuario->getId_usuario())) {
+        if (!is_null($tratamiento->getId_tratamiento())) {
 
-            $Id_usuario = $usuario->getId_usuario();
-            $resultado->bindParam(":Id_usuario", $Id_usuario);
+            $id_tratamiento = $tratamiento->getId_tratamiento();
+            $resultado->bindParam(":id_tratamiento", $id_tratamiento);
         }
 
-        $resultado->bindParam(":codigoUCC", $codigoUCC);
-        $resultado->bindParam(":nombres", $nombres);
-        $resultado->bindParam(":apellidos", $apellidos);
-        $resultado->bindParam(":genero", $genero);
-        $resultado->bindParam(":telefono", $telefono);
-        $resultado->bindParam(":email", $email);
-        $resultado->bindParam(":privilegio", $privilegio);
-        $resultado->bindParam(":password", $password);
-        $resultado->bindParam(":status_usuario", $status_usuario);
+        $resultado->bindParam(":nombre", $nombre);
+        $resultado->bindParam(":observaciones", $observaciones);
+        $resultado->bindParam(":status_tratamiento", $status_tratamiento);
+
+
 
         if ($resultado->execute()) {
             return true;
@@ -110,72 +88,51 @@ class tratamientoDao extends conexion {
         return false;
     }
 
-    
-    
-    
-    
-    
     /**
-     * Metodo que sirve para buscar un usuario por su codigoUcc, esto con el fin
+     * Metodo que sirve para buscar un tratamiento por su nombre, esto con el fin
      * de cargar el formulario para su posterior actualizacion
-     * @param object $usuario
+     * @param object $nombre
      * @return object
      */
     public static function getTratamientoPorid($nombre) {
 
-        $query = "SELECT id_usuario, codigoUCC, nombres, apellidos, genero, telefono, email, "
-                . "privilegio, password, status_usuario FROM usuarios WHERE codigoUCC = :codigoUCC";
+        $query = "SELECT id_tratamiento, nombre, observaciones, status_tratamiento "
+                . "FROM tratamientos WHERE nombre = :nombre";
 
         self::getConexion();
 
         $resultado = self::$cnx->prepare($query);
 
-        //Cambios para implementar 14.03.20 en el proyecto       
-        $resultado->bindParam(":codigoUCC", $codigoUCC);
+        $resultado->bindParam(":nombre", $nombre);
 
         $resultado->execute();
 
         $filas = $resultado->fetch();
 
-        $usuario = new usuario();
-        $usuario->setId_usuario($filas["id_usuario"]);
-        $usuario->setCodigoUCC($filas["codigoUCC"]);
-        $usuario->setNombres($filas["nombres"]);
-        $usuario->setApellidos($filas["apellidos"]);
-        $usuario->setGenero($filas["genero"]);
-        $usuario->setTelefono($filas["telefono"]);
-        $usuario->setEmail($filas["email"]);
-        $usuario->setPrivilegio($filas["privilegio"]);
-        $usuario->setPassword($filas["password"]);
-        $usuario->setStatus_usuario($filas["status_usuario"]);
+        $tratamiento = new tratamiento();
+        $tratamiento->setId_tratamiento($filas["id_tratamiento"]);
+        $tratamiento->setNombre($filas["nombre"]);
+        $tratamiento->setObservaciones($filas["observaciones"]);
+        $tratamiento->setStatus_tratamiento($filas["status_tratamiento"]);
 
-        return $usuario;
+
+        return $tratamiento;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
     /**
-     * Metodo que sirve para eliminar un usuario
-     * @param object $usuario
+     * Metodo que sirve para eliminar un tratamiento
+     * @param object $nombre
      * @return boolean
      */
-    public static function eliminarUsuario($codigoUCC) {
+    public static function eliminarTratamiento($nombre) {
 
-        $query = "DELETE FROM usuarios WHERE codigoUCC = :codigoUCC";
+        $query = "DELETE FROM tratamientos WHERE nombre = :nombre";
 
         self::getConexion();
 
         $resultado = self::$cnx->prepare($query);
-     
-        $resultado->bindParam(":codigoUCC", $codigoUCC);
+
+        $resultado->bindParam(":nombre", $nombre);
 
         $resultado->execute();
 
@@ -185,56 +142,5 @@ class tratamientoDao extends conexion {
 
         return false;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
-    /**
-     * Metodo que registra los usuarios desde el login
-     * @param object $usuario
-     * @return boolean 1 registra y 2 no registra
-     */
-    /*     * public static function registrar_usuario($usuario) {
-      $query = "INSERT INTO usuarios (nombre,usuario,email,password,privilegio) VALUES (:nombre,:usuario,:email,:password,:privilegio)";
-
-      self::getConexion();
-
-      $resultado = self::$cnx->prepare($query);
-
-      $resultado->bindValue(":nombre", $usuario->getNombre());
-      $resultado->bindValue(":usuario", $usuario->getCodigoUCC());
-      $resultado->bindValue(":email", $usuario->getEmail());
-      $resultado->bindValue(":password", $usuario->getPassword());
-      $resultado->bindValue(":privilegio", $usuario->getPrivilegio());
-
-      if($resultado->execute()){
-      return true;
-      }
-
-      return false;
-      }* */
 }

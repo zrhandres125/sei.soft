@@ -25,11 +25,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (isset($_POST["txtid_usuario"])) {
             if (UsuarioControlador::crearUsuario($txtcodigoUcc, $txtnombres, $txtapellidos,
-                            $sgenero, $txttelefono, $txtemail, $srol, $txtpassword, $sestado, validar_campo($_POST["txtid_usuario"]))) {
+                            $sgenero, $txttelefono, $txtemail, $srol, $txtpassword, $sestado,
+                            validar_campo($_POST["txtid_usuario"]))) {
                 ?> 
 
                 <script type="text/javascript">
                     alert('Usuario actualizado con exito.');
+                    window.location.href = '?modulo=usuarios/listar_usuarios';
+                </script>
+
+                <?php
+
+            } else {
+                ?>
+
+                <script type="text/javascript">
+                    alert('No se pudo actualizar el usuario.');
                     window.location.href = '?modulo=usuarios/listar_usuarios';
                 </script>
 
@@ -63,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     ?>
     <script type="text/javascript">
-        alert('Error el recibir datos.');
+        alert('Error al recibir datos.');
         window.location.href = '?modulo=usuarios/listar_usuarios';
     </script>        
 

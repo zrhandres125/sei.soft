@@ -98,7 +98,8 @@ class usuarioDao extends conexion {
     public static function getUsuarios() {
 
         $query = "SELECT id_usuario, codigoUCC, CONCAT(nombres,' ',apellidos) AS "
-                . "usuario, genero, telefono, email, privilegio, status_usuario FROM usuarios";
+                . "usuario, genero, telefono, email, privilegio, status_usuario FROM usuarios "
+                . "ORDER BY id_usuario ASC";
 
         self::getConexion();
 
