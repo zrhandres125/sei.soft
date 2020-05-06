@@ -220,7 +220,7 @@ class usuarioDao extends conexion {
         self::getConexion();
 
         $resultado = self::$cnx->prepare($query);
-  
+
         $resultado->bindParam(":codigoUCC", $codigoUCC);
 
         $resultado->execute();
@@ -231,34 +231,46 @@ class usuarioDao extends conexion {
 
         return false;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
+    /**
+     * Metodo que valida si un usuario existe o no antes de registrar
+     * @param type $codigoUCC
+     * @return boolean
+     */
+    public function getDisponibilidadUsuario($codigoUCC) {
+
+        $query = "SELECT * FROM usuarios WHERE codigoUCC = :codigoUCC";
+
+        self::getConexion();
+
+        $resultado = self::$cnx->prepare($query);
+
+        $resultado->bindParam(":codigoUCC", $codigoUCC);
+
+        $resultado->execute();
+
+        if ($resultado->rowCount() > 0) {
+
+            return true;
+        } else {
+
+            return false;
+        }
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /**
      * Metodo que registra los usuarios desde el login
      * @param object $usuario

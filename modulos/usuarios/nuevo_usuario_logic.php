@@ -70,6 +70,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             }
         }
+    } else {
+        ?>
+                
+        <script type="text/javascript">
+            alert('Error al recibir datos.');
+            window.location.href = '?modulo=usuarios/listar_usuarios';
+        </script> 
+        
+        <?php
+
     }
 } else {
     ?>

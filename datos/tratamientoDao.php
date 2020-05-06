@@ -98,7 +98,9 @@ class tratamientoDao extends conexion {
 
         $query = "SELECT id_tratamiento, nombre, observaciones, status_tratamiento "
                 . "FROM tratamientos WHERE nombre = :nombre";
-
+        
+        //echo $query.'<br>';
+        
         self::getConexion();
 
         $resultado = self::$cnx->prepare($query);

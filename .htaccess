@@ -12,4 +12,3 @@ RewriteCond %{SCRIPT_FILENAME} !-f
 RewriteRule ^(.*)$ $1.php
 
 </IfModule>
-

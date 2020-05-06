@@ -8,7 +8,7 @@ if (isset($_SESSION["usuario"])) {
         header("location: asistente");
     }
 } else {
-    header("location: login.php");
+    header("location: index");
 }
 ?>
 

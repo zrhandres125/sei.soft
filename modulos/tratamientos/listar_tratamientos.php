@@ -13,28 +13,14 @@ $filas = tratamientoControlador::getTratamientos();
                     <span class="icon is-small">
                         <i class="zmdi zmdi-format-list-bulleted"></i>
                     </span>
-                    &nbsp; Modulo Tratamientos
+                    &nbsp; Modulo gestión tratamientos
                 </h4>
             </div>
+
+            <div class="column is-4 is-hidden-mobile">&nbsp;</div>
+
             <div class="column is-4 has-text-centered">
-                <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                        <label class="label">Buscar:</label>
-                    </div>
-                    <div class="field-body">
-                        <div class="field is-grouped">
-                            <p class="control is-expanded has-icons-right">
-                                <input class="input is-hovered" type="text" required>
-                                <span class="icon is-small is-right">
-                                    <i class="zmdi zmdi-format-list-bulleted"></i>
-                                </span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="column is-4 has-text-centered">
-                <a class="button is-primary is-hovered" href="?modulo=tratamientos/nuevo_tratamiento">
+                <a class="button is-hovered is-fullwidth" href="?modulo=tratamientos/nuevo_tratamiento">
                     <span class="icon is-small">
                         <i class="zmdi zmdi-format-list-bulleted"></i>
                     </span>
@@ -47,7 +33,7 @@ $filas = tratamientoControlador::getTratamientos();
         <div class="columns" style="margin-top: 30px;">
             <div class="column is-12">
                 <div class="table-container">
-                    <table class="table is-hoverable is-fullwidth">
+                    <table class="table is-hoverable is-fullwidth" id="tratamientos">
                         <thead>
                             <tr>
                                 <th class="has-text-centered">Nombre</th>
@@ -99,4 +85,17 @@ $filas = tratamientoControlador::getTratamientos();
     }
 
 </script>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#tratamientos').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            }
+        });
+    });
+</script> 
+
 

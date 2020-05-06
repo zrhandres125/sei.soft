@@ -177,7 +177,7 @@ if (isset($_GET["codigoUCC"])) {
                         </div>
                     </div>
 
-                    <button class="button is-fullwidth is-info" style="margin-top: 10px;">
+                    <button class="button is-fullwidth is-info" style="margin-top: 10px;" id="crear_usu">
                         <span class="icon is-small">
                             <i class="zmdi zmdi-accounts-add"></i>
                         </span>
@@ -198,4 +198,9 @@ if (isset($_GET["codigoUCC"])) {
     </div>
 </section>
 
+
+
+
 <script type="text/javascript" src="assets/js/validar_frm_usuario.js"></script>
+
+
