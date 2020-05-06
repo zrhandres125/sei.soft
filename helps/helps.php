@@ -25,11 +25,11 @@ function getPrivilegio($p){
     
     switch ($p) {
         case 1:
-            $privilegio = "Admon.";
+            $privilegio = "Administrador";
             break;
         
         case 2:
-            $privilegio = "Asist.";
+            $privilegio = "Asistente";
             break;
 
         default:
