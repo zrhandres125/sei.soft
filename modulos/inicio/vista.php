@@ -31,52 +31,64 @@
                             Género: <?php echo $_SESSION["usuario"]["genero"]; ?> <br>
                             Rol:  <?php echo getPrivilegio($_SESSION["usuario"]["privilegio"]); ?> <br>
                             Teléfono: <?php echo $_SESSION["usuario"]["telefono"]; ?> <br>
-
-
-                            <a href="#">Editar mi perfil</a> 
-
                         </div>
                     </div>
                 </div>
             </div>
 
+            <div class="column has-text-centered" style="margin-top: 40px;">
+                <p class="title is-4">Menú | Opciones</p>
+                <div class="columns" style="margin-top: 40px;">
+                    <div class="column">
+                        <p style="margin-bottom: 50px;">
+                            <i class="zmdi zmdi-account zmdi-hc-5x"></i><br> 
+                            <a class="has-text-grey-darker" href="?modulo=usuarios/listar_usuarios">
+                                Modulo Usuarios
+                            </a>
+                        </p>
 
-            <div class="column has-text-centered">
-                <p class="bd-notification is-info">Menú | Opciones</p>
-                
-                <br>
-                
-                <div class="columns is-mobile">
-                    <div class="column">
-                        <p class="bd-notification is-info">First nested column</p>
+                        <p>
+                            <i class="zmdi zmdi-assignment zmdi-hc-5x"></i><br> 
+                            <a class="has-text-grey-darker" href="?modulo=usuarios/listar_usuarios">
+                                Indicadores Bienestar
+                            </a>
+                        </p>
                     </div>
+
                     <div class="column">
-                        <p class="bd-notification is-info">Second nested column</p>
+                        <p style="margin-bottom: 50px;">
+                            <i class="zmdi zmdi-format-list-bulleted zmdi-hc-5x"></i><br> 
+                            <a class="has-text-grey-darker" href="?modulo=tratamientos/listar_tratamientos">
+                                Modulo Tratamientos
+                            </a>
+                        </p>
+
+                        <p>
+                            <i class="zmdi zmdi-book zmdi-hc-5x"></i><br> 
+                            <a class="has-text-grey-darker" href="?modulo=tratamientos/listar_tratamientos">
+                                Indicadores Calidad del Huevo
+                            </a>
+                        </p>
                     </div>
+
                     <div class="column">
-                        <p class="bd-notification is-info">Second nested column</p>
+                        <p style="margin-bottom: 50px;">
+                            <i class="zmdi zmdi-folder zmdi-hc-5x"></i><br> 
+                            <a class="has-text-grey-darker" href="?modulo=tratamientos/listar_tratamientos">
+                                Modulo Gestión UE
+                            </a>
+                        </p>
+
+                        <p>
+                            <i class="zmdi zmdi-archive zmdi-hc-5x"></i><br> 
+                            <a class="has-text-grey-darker" href="?modulo=tratamientos/listar_tratamientos">
+                                Indicadores Productividad
+                            </a>
+                        </p>
                     </div>
                 </div>
             </div>
-
-
-
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
 </section>
 
