@@ -17,7 +17,6 @@
 <script src="assets/js/modal.js"></script>
 <script src="assets/js/dropdown.js"></script>
 <script type="text/javascript" src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>  
-<script type="text/javascript" src="//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"></script> 
 
 </body>
 

@@ -25,7 +25,8 @@ class tratamientoDao extends conexion {
      */
     public static function getTratamientos() {
 
-        $query = "SELECT id_tratamiento, nombre, observaciones, status_tratamiento FROM tratamientos ORDER BY id_tratamiento ASC";
+        $query = "SELECT id_tratamiento, nombre, observaciones, status_tratamiento "
+                . "FROM tratamientos ORDER BY id_tratamiento ASC";
 
         self::getConexion();
 
@@ -62,13 +63,11 @@ class tratamientoDao extends conexion {
 
         $resultado = self::$cnx->prepare($query);
 
-        $nombre = $tratamiento->getNombre();
-        $observaciones = $tratamiento->getObservaciones();
+        $nombre             = $tratamiento->getNombre();
+        $observaciones      = $tratamiento->getObservaciones();
         $status_tratamiento = $tratamiento->getStatus_tratamiento();
 
-        echo $nombre;
-
-
+        
         if (!is_null($tratamiento->getId_tratamiento())) {
 
             $id_tratamiento = $tratamiento->getId_tratamiento();
@@ -91,7 +90,7 @@ class tratamientoDao extends conexion {
     /**
      * Metodo que sirve para buscar un tratamiento por su nombre, esto con el fin
      * de cargar el formulario para su posterior actualizacion
-     * @param object $nombre
+     * @param String $nombre
      * @return object
      */
     public static function getTratamientoPorid($nombre) {
@@ -99,7 +98,7 @@ class tratamientoDao extends conexion {
         $query = "SELECT id_tratamiento, nombre, observaciones, status_tratamiento "
                 . "FROM tratamientos WHERE nombre = :nombre";
         
-        //echo $query.'<br>';
+        //echo $query;
         
         self::getConexion();
 

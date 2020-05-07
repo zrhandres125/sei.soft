@@ -26,6 +26,14 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             <?php
 
         }
+    } else {
+        ?>
+        <script type="text/javascript">
+            alert('Error el recibir datos.');
+            window.location.href = '?modulo=tratamientos/listar_tratamientos';
+        </script>  
+        <?php
+
     }
 } else {
     ?>

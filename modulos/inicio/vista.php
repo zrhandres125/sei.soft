@@ -3,7 +3,7 @@
 <section class="section">
     <div class="container">
         <div class="columns">
-            <div class="column is-4">
+            <div class="column is-3">
                 <div class="card">
                     <div class="card-image">
                         <figure class="image is-4by3">
@@ -31,14 +31,36 @@
                             Género: <?php echo $_SESSION["usuario"]["genero"]; ?> <br>
                             Rol:  <?php echo getPrivilegio($_SESSION["usuario"]["privilegio"]); ?> <br>
                             Teléfono: <?php echo $_SESSION["usuario"]["telefono"]; ?> <br>
-                            E-mail: <?php echo $_SESSION["usuario"]["email"]; ?> <br>
+
 
                             <a href="#">Editar mi perfil</a> 
-                            
+
                         </div>
                     </div>
                 </div>
             </div>
+
+
+            <div class="column has-text-centered">
+                <p class="bd-notification is-info">Menú | Opciones</p>
+                
+                <br>
+                
+                <div class="columns is-mobile">
+                    <div class="column">
+                        <p class="bd-notification is-info">First nested column</p>
+                    </div>
+                    <div class="column">
+                        <p class="bd-notification is-info">Second nested column</p>
+                    </div>
+                    <div class="column">
+                        <p class="bd-notification is-info">Second nested column</p>
+                    </div>
+                </div>
+            </div>
+
+
+
         </div>
 
 

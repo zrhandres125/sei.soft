@@ -10,8 +10,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["txtn_tratamiento"]) && isset($_POST["txtobs"]) && isset($_POST["sestado"])) {
 
         $txtn_tratamiento = validar_campo($_POST["txtn_tratamiento"]);
-        $txtobs = validar_campo($_POST["txtobs"]);
-        $sestado = validar_campo($_POST["sestado"]);
+        $txtobs           = validar_campo($_POST["txtobs"]);
+        $sestado          = validar_campo($_POST["sestado"]);
 
         if (isset($_POST["txtid_tratamiento"])) {
             if (tratamientoControlador::crearTratamiento($txtn_tratamiento, $txtobs, $sestado,
