@@ -3,6 +3,9 @@ include "controlador/usuarioControlador.php";
 include "helps/helps.php";
 
 $filas = usuarioControlador::getUsuarios();
+
+
+
 ?>
 
 <section class="section">
@@ -32,7 +35,7 @@ $filas = usuarioControlador::getUsuarios();
         <div class="columns" style="margin-top: 30px;">
             <div class="column is-12">
                 <div class="table-container">
-                    <table class="table is-hoverable is-fullwidth" id="usuarios">
+                    <table class="table is-hoverable is-fullwidth" id="grid">
                         <thead>
                             <tr>
                                 <th class="has-text-centered">Código</th>
@@ -93,18 +96,7 @@ $filas = usuarioControlador::getUsuarios();
 
 </script>
 
-
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#usuarios').DataTable({
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-            }
-        });
-    });
-</script> 
-
+<script type="text/javascript" src="assets/js/datatable.js"></script> 
 
 
 

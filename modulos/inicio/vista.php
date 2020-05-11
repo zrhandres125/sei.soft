@@ -29,8 +29,8 @@
                         <div class="content">
                             Usuario:  <?php echo $_SESSION["usuario"]["usuario"]; ?> <br>
                             Género: <?php echo $_SESSION["usuario"]["genero"]; ?> <br>
-                            Rol:  <?php echo getPrivilegio($_SESSION["usuario"]["privilegio"]); ?> <br>
-                            Teléfono: <?php echo $_SESSION["usuario"]["telefono"]; ?> <br>
+                            Privilegio:  <?php echo getPrivilegio($_SESSION["usuario"]["privilegio"]); ?> <br>
+                            
                         </div>
                     </div>
                 </div>
@@ -41,14 +41,14 @@
                 <div class="columns" style="margin-top: 40px;">
                     <div class="column">
                         <p style="margin-bottom: 50px;">
-                            <i class="zmdi zmdi-account zmdi-hc-5x"></i><br> 
+                            <i class="zmdi zmdi-account zmdi-hc-4x"></i><br> 
                             <a class="has-text-grey-darker" href="?modulo=usuarios/listar_usuarios">
                                 Modulo Usuarios
                             </a>
                         </p>
 
                         <p>
-                            <i class="zmdi zmdi-assignment zmdi-hc-5x"></i><br> 
+                            <i class="zmdi zmdi-assignment zmdi-hc-4x"></i><br> 
                             <a class="has-text-grey-darker" href="?modulo=usuarios/listar_usuarios">
                                 Indicadores Bienestar
                             </a>
@@ -57,14 +57,14 @@
 
                     <div class="column">
                         <p style="margin-bottom: 50px;">
-                            <i class="zmdi zmdi-format-list-bulleted zmdi-hc-5x"></i><br> 
+                            <i class="zmdi zmdi-format-list-bulleted zmdi-hc-4x"></i><br> 
                             <a class="has-text-grey-darker" href="?modulo=tratamientos/listar_tratamientos">
                                 Modulo Tratamientos
                             </a>
                         </p>
 
                         <p>
-                            <i class="zmdi zmdi-book zmdi-hc-5x"></i><br> 
+                            <i class="zmdi zmdi-book zmdi-hc-4x"></i><br> 
                             <a class="has-text-grey-darker" href="?modulo=tratamientos/listar_tratamientos">
                                 Indicadores Calidad del Huevo
                             </a>
@@ -73,14 +73,14 @@
 
                     <div class="column">
                         <p style="margin-bottom: 50px;">
-                            <i class="zmdi zmdi-folder zmdi-hc-5x"></i><br> 
+                            <i class="zmdi zmdi-folder zmdi-hc-4x"></i><br> 
                             <a class="has-text-grey-darker" href="?modulo=tratamientos/listar_tratamientos">
                                 Modulo Gestión UE
                             </a>
                         </p>
 
                         <p>
-                            <i class="zmdi zmdi-archive zmdi-hc-5x"></i><br> 
+                            <i class="zmdi zmdi-archive zmdi-hc-4x"></i><br> 
                             <a class="has-text-grey-darker" href="?modulo=tratamientos/listar_tratamientos">
                                 Indicadores Productividad
                             </a>

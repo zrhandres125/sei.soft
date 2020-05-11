@@ -11,7 +11,9 @@
         <link rel="stylesheet" type="text/css" href="assets/css/main.css">
         <link rel="stylesheet" type="text/css" href="assets/css/overhang.min.css" />
         <link rel="stylesheet" type="text/css" href="assets/icon/css/material-design-iconic-font.min.css">
-        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css"/>
+        <script src="https://kit.fontawesome.com/e73aeadffd.js" crossorigin="anonymous"></script>
         <script src="assets/js/jquery.min.js"></script>
 
     </head>

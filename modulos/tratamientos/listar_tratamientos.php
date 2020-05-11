@@ -33,7 +33,7 @@ $filas = tratamientoControlador::getTratamientos();
         <div class="columns" style="margin-top: 30px;">
             <div class="column is-12">
                 <div class="table-container">
-                    <table class="table is-hoverable is-fullwidth" id="tratamientos">
+                    <table class="table is-hoverable is-fullwidth" id="grid">
                         <thead>
                             <tr>
                                 <th class="has-text-centered">Nombre</th>
@@ -86,16 +86,6 @@ $filas = tratamientoControlador::getTratamientos();
 
 </script>
 
-
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#tratamientos').DataTable({
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-            }
-        });
-    });
-</script> 
+<script type="text/javascript" src="assets/js/datatable.js"></script> 
 
 

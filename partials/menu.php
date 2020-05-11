@@ -82,7 +82,7 @@
 
                 <a class="navbar-item" href="#">
                     <span class="icon is-small">
-                        <i class="zmdi zmdi-ruler"></i>
+                        <i class="zmdi zmdi-chart-donut"></i>
                     </span>
                     &nbsp; Reportes
                 </a>
