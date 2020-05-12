@@ -88,7 +88,7 @@
                 </a>
             <?php } else { ?>
 
-                <a class="navbar-item" href="asistente.php">
+                <a class="navbar-item" href="asistente">
                     <span class="icon is-small">
                         <i class="zmdi zmdi-home"></i>
                     </span>
