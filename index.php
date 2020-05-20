@@ -50,7 +50,7 @@
                 <figure class="image is-128x128 is-inline-block">
                     <img src="assets/img/logo-ucc.png">
                 </figure>
-                <form action="validarCode.php" method="POST" role="form" id="loginForm">
+                <form action="validarCode.php" method="POST" role="form" id="loginForm" name="loginForm" onsubmit="salir()">
                     <div class="field">
                         <label class="label has-text-left">Usuario</label>
                         <div class="control has-icons-right">
@@ -90,5 +90,24 @@
         </div>
     </div>
 </section>
+
+<script>
+
+    function salir() {
+        var frm = document.loginForm;
+        var solo_numeros = /^\d*$/;
+
+        if (!solo_numeros.test(frm.txtUsuario.value) || frm.txtUsuario.value == 0) {
+
+            alert("Código UCC no válido");
+
+            return false;
+
+        }
+    }
+
+
+
+</script>
 
 <?php include "partials/footer.php"; ?>
